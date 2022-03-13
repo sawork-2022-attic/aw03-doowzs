@@ -154,17 +154,17 @@
 	</td>
 	<td class="text-center"> 
 		<div class="m-btn-group m-btn-group--pill btn-group mr-2" role="group" aria-label="...">
-																		<button type="button"
-                                                                                class="m-btn btn btn-default"><i
-                                                                                class="fa fa-minus"></i></button>
-																		<button type="button"
-                                                                                class="m-btn btn btn-default"
-                                                                                disabled><span
-                                                                                th:text="${item.quantity}"></span></button>
-																		<button type="button"
-                                                                                class="m-btn btn btn-default"><i
-                                                                                class="fa fa-plus"></i></button>
-																	</div>
+            <button type="button"
+                    class="m-btn btn btn-default"><i
+                    class="fa fa-minus"></i></button>
+            <button type="button"
+                    class="m-btn btn btn-default"
+                    disabled><span
+                    th:text="${item.quantity}"></span></button>
+            <button type="button"
+                    class="m-btn btn btn-default"><i
+                    class="fa fa-plus"></i></button>
+        </div>
 	</td>
 	<td> 
 		<div class="price-wrap"> 
@@ -172,7 +172,9 @@
 		</div> <!-- price-wrap .// -->
 	</td>
 	<td class="text-right"> 
-	<a href="" class="btn btn-outline-danger"> <i class="fa fa-trash"></i></a>
+	    <a th:href="${'/remove?productId=' + item.getProduct().id}" class="btn btn-outline-danger">
+            <i class="fa fa-trash"></i>
+        </a>
 	</td>
 </tr>
 </tbody>
