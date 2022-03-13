@@ -103,83 +103,88 @@
                             <i class="fa fa-tags "></i> Category 5</a></li>
                 </ul>
                 <span id="items">
-	<div class="row">
-<div class="col-md-3" th:each="product : ${products}">
-	<figure class="card card-product">
-		<span class="badge-new"> NEW </span>
-		<div class="img-wrap">
-			<img th:src="@{${'/images/items/'+ product.image}}">
-			<a class="btn-overlay" href="#"><i class="fa fa-search-plus"></i> Quick view</a>
-		</div>
-		<figcaption class="info-wrap">
-			<a href="#" class="title"><span th:text="${product.name}"></span></a>
-			<div class="action-wrap">
-				<a th:href="${'/add?productId=' + product.id}" class="btn btn-primary btn-sm float-right">
-                    <i class="fa fa-cart-plus"></i> Add
-                </a>
-				<div class="price-wrap h5">
-					<span class="price-new" th:text="${'$' + product.price}"></span>
-				</div> <!-- price-wrap.// -->
-			</div> <!-- action-wrap -->
-		</figcaption>
-	</figure> <!-- card // -->
-</div> <!-- col // -->
-            </div>
-
-            </span>
+	                <div class="row">
+                        <div class="col-md-3" th:each="product : ${products}">
+	                        <figure class="card card-product">
+		                        <span class="badge-new"> NEW </span>
+		                        <div class="img-wrap">
+			                        <img th:src="@{${'/images/items/'+ product.image}}">
+			                        <a class="btn-overlay" href="#">
+                                        <i class="fa fa-search-plus"></i> Quick view
+                                    </a>
+		                        </div>
+		                        <figcaption class="info-wrap">
+                                    <a href="#" class="title">
+                                        <span th:text="${product.name}"></span>
+                                    </a>
+                                    <div class="action-wrap">
+                                        <a th:href="${'/add?productId=' + product.id}"
+                                           class="btn btn-primary btn-sm float-right">
+                                            <i class="fa fa-cart-plus"></i> Add
+                                        </a>
+                                        <div class="price-wrap h5">
+                                            <span class="price-new" th:text="${'$' + product.price}"></span>
+                                        </div> <!-- price-wrap.// -->
+                                    </div> <!-- action-wrap -->
+		                        </figcaption>
+	                        </figure> <!-- card // -->
+                        </div> <!-- col // -->
+                    </div>
+                </span>
             </div>
             <div class="col-md-4">
                 <div class="card">
-	<span id="cart">
-<table class="table table-hover shopping-cart-wrap">
-<thead class="text-muted">
-<tr>
-  <th scope="col">Item</th>
-  <th scope="col" width="120">Qty</th>
-  <th scope="col" width="120">Price</th>
-  <th scope="col" class="text-right" width="200">Delete</th>
-</tr>
-</thead>
-<tbody>
-
-<tr th:each="item : ${cart.items}">
-	<td>
-<figure class="media">
-	<div class="img-wrap"><img th:src="@{${'/images/items/'+ item.product.image}}"
-                               class="img-thumbnail img-xs"></div>
-	<figcaption class="media-body">
-		<h6 class="title text-truncate"><span th:text="${item.product.name}"></span></h6>
-	</figcaption>
-</figure> 
-	</td>
-	<td class="text-center"> 
-		<div class="m-btn-group m-btn-group--pill btn-group mr-2" role="group" aria-label="...">
-            <button type="button"
-                    class="m-btn btn btn-default"><i
-                    class="fa fa-minus"></i></button>
-            <button type="button"
-                    class="m-btn btn btn-default"
-                    disabled><span
-                    th:text="${item.quantity}"></span></button>
-            <button type="button"
-                    class="m-btn btn btn-default"><i
-                    class="fa fa-plus"></i></button>
-        </div>
-	</td>
-	<td> 
-		<div class="price-wrap"> 
-			<var class="price"><span th:text="${item.product.price}"></span></var>
-		</div> <!-- price-wrap .// -->
-	</td>
-	<td class="text-right"> 
-	    <a th:href="${'/remove?productId=' + item.getProduct().id}" class="btn btn-outline-danger">
-            <i class="fa fa-trash"></i>
-        </a>
-	</td>
-</tr>
-</tbody>
-</table>
-</span>
+	                <span id="cart">
+                        <table class="table table-hover shopping-cart-wrap">
+                            <thead class="text-muted">
+                                <tr>
+                                    <th scope="col">Item</th>
+                                    <th scope="col" width="120">Qty</th>
+                                    <th scope="col" width="120">Price</th>
+                                    <th scope="col" class="text-right" width="200">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="item : ${cart.items}">
+                                    <td>
+                                        <figure class="media">
+                                            <div class="img-wrap">
+                                                <img th:src="@{${'/images/items/'+ item.product.image}}"
+                                                     class="img-thumbnail img-xs">
+                                            </div>
+                                            <figcaption class="media-body">
+                                                <h6 class="title text-truncate"><span th:text="${item.product.name}"></span></h6>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="m-btn-group m-btn-group--pill btn-group mr-2" role="group" aria-label="...">
+                                            <button type="button"
+                                                    class="m-btn btn btn-default"><i
+                                                    class="fa fa-minus"></i></button>
+                                            <button type="button"
+                                                    class="m-btn btn btn-default"
+                                                    disabled><span
+                                                    th:text="${item.quantity}"></span></button>
+                                            <button type="button"
+                                                    class="m-btn btn btn-default"><i
+                                                    class="fa fa-plus"></i></button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="price-wrap">
+                                            <var class="price"><span th:text="${item.product.price}"></span></var>
+                                        </div> <!-- price-wrap .// -->
+                                    </td>
+                                    <td class="text-right">
+                                        <a th:href="${'/remove?productId=' + item.getProduct().id}" class="btn btn-outline-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </span>
                 </div> <!-- card.// -->
                 <div class="box">
                     <dl class="dlist-align">
@@ -204,12 +209,15 @@
                     </dl>
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="#" class="btn  btn-default btn-error btn-lg btn-block"><i
-                                    class="fa fa-times-circle "></i> Cancel </a>
+                            <a href="/clear" class="btn btn-default btn-error btn-lg btn-block">
+                                <i class="fa fa-times-circle "></i> Cancel
+                            </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" class="btn  btn-primary btn-lg btn-block"><i class="fa fa-shopping-bag"></i>
-                                Charge </a>
+                            <a href="/checkout" class="btn btn-primary btn-lg btn-block"
+                               th:onclick="alert('Your total is [[${total}]]')">
+                                <i class="fa fa-shopping-bag"></i> Charge
+                            </a>
                         </div>
                     </div>
                 </div> <!-- box.// -->
