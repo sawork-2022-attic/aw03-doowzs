@@ -12,8 +12,15 @@ public class Cart {
     private List<Item> items = new ArrayList<>();
 
     public boolean addItem(Item item) {
+        int amount = items.stream()
+                .filter(i -> Objects.equals(i.getProduct(), item.getProduct()))
+                .mapToInt(Item::getQuantity)
+                .sum();
         items.removeIf(i -> Objects.equals(i.getProduct(), item.getProduct()));
-        return items.add(item);
+        if (amount + item.getQuantity() > 0) {
+            items.add(new Item(item.getProduct(), amount + item.getQuantity()));
+        }
+        return true;
     }
 
     public boolean removeItem(Item item) {

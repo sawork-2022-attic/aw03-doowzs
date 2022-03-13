@@ -29,8 +29,10 @@ public class PosController {
     }
 
     @GetMapping("/add")
-    public String add(Model model, @RequestParam String productId) {
-        posService.add(productId, 1);
+    public String add(Model model,
+                      @RequestParam String productId,
+                      @RequestParam(required = false, defaultValue = "1") int amount) {
+        posService.add(productId, amount);
         model.addAttribute("products", posService.products());
         model.addAttribute("cart", posService.getCart());
         model.addAttribute("total", posService.getTotal());
