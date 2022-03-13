@@ -24,6 +24,7 @@ public class PosController {
         posService.add("PD1", 2);
         model.addAttribute("products", posService.products());
         model.addAttribute("cart", posService.getCart());
+        model.addAttribute("total", posService.getTotal());
         return "index";
     }
 
@@ -32,6 +33,7 @@ public class PosController {
         posService.add(productId, 1);
         model.addAttribute("products", posService.products());
         model.addAttribute("cart", posService.getCart());
+        model.addAttribute("total", posService.getTotal());
         return "index";
     }
 
@@ -40,6 +42,7 @@ public class PosController {
         posService.remove(productId);
         model.addAttribute("products", posService.products());
         model.addAttribute("cart", posService.getCart());
+        model.addAttribute("total", posService.getTotal());
         return "index";
     }
 
@@ -48,6 +51,16 @@ public class PosController {
         posService.newCart();
         model.addAttribute("products", posService.products());
         model.addAttribute("cart", posService.getCart());
+        model.addAttribute("total", posService.getTotal());
+        return "index";
+    }
+
+    @GetMapping("/checkout")
+    public String checkout(Model model) {
+        posService.checkout();
+        model.addAttribute("products", posService.products());
+        model.addAttribute("cart", posService.getCart());
+        model.addAttribute("total", posService.getTotal());
         return "index";
     }
 

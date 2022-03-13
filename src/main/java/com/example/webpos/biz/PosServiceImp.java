@@ -23,7 +23,7 @@ public class PosServiceImp implements PosService {
     public Cart getCart() {
 
         Cart cart = posDB.getCart();
-        if (cart == null){
+        if (cart == null) {
             cart = this.newCart();
         }
         return cart;
@@ -35,15 +35,16 @@ public class PosServiceImp implements PosService {
     }
 
     @Override
-    public void checkout(Cart cart) {
+    public void checkout() {
 
         // charge total price
         newCart();
     }
 
     @Override
-    public double total(Cart cart) {
-        return cart.getItems().stream()
+    public double getTotal() {
+        return getCart()
+                .getItems().stream()
                 .mapToDouble((i) -> i.getProduct().getPrice() * i.getQuantity())
                 .sum();
     }

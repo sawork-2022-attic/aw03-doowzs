@@ -190,11 +190,15 @@
                     </dl>
                     <dl class="dlist-align">
                         <dt>Sub Total:</dt>
-                        <dd class="text-right">$215</dd>
+                        <dd class="text-right">
+                            <span th:text="${'$' + total}"></span>
+                        </dd>
                     </dl>
                     <dl class="dlist-align">
                         <dt>Total:</dt>
-                        <dd class="text-right h4 b"> $215</dd>
+                        <dd class="text-right h4 b">
+                            <span th:text="${'$' + total}"></span>
+                        </dd>
                     </dl>
                     <div class="row">
                         <div class="col-md-6">
